@@ -1,0 +1,4 @@
+<div *ngIf="serverInfo" class="d-flex">
+    <div>Date Time:</div>
+    <div [ngClass]="{'big-value': serverInfo.dateTime > 15000}">{{ serverInfo.dateTime }}</div>
+  </div>
