@@ -2,7 +2,6 @@ export interface ServerInfoDTO {
     success?: boolean;
     message?: string;
     results?: Result[];
-    dateTime?: any;
 }
 
 export interface Result {

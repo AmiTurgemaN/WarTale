@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { SharedService } from 'src/app/services/shared.service';
+import { ServerInfoHttpService } from 'src/app/services/shared.service';
 import { ServerInfoDTO } from '../../models/server-info-DTO';
-import { tap } from 'rxjs/operators'
+import { ServerInfoPropertyInitializerService } from '../../services/server-info-property-initializer.service';
+import { tap } from 'rxjs/operators';
+import { ServerInfoProperty } from 'src/app/models/serverInfoProperty';
 
 @Component({
   selector: 'app-server-info-display',
@@ -9,20 +11,27 @@ import { tap } from 'rxjs/operators'
   styleUrls: ['./server-info-display.component.scss']
 })
 export class ServerInfoDisplayComponent implements OnInit {
-  serverInfo: ServerInfoDTO = {};
 
-  constructor(private sharedService: SharedService) { }
+  serverInfo: ServerInfoDTO;
+  serverInfoProperties: ServerInfoProperty [];
+
+  constructor(
+      private serverInfoHttpService: ServerInfoHttpService,
+      private serverInfoPropertyInitializerService: ServerInfoPropertyInitializerService){ 
+    this.serverInfo = {};
+    this.serverInfoProperties = [];
+  }
 
   ngOnInit(): void {
     this.getServerInfo();
   }
 
   private getServerInfo() {
-    this.sharedService.getServiceInfo()
+    this.serverInfoHttpService.getServerInfoInfo()
     .pipe(
-      tap((data: ServerInfoDTO) => this.serverInfo = data)
+      tap((data: ServerInfoDTO) => this.serverInfo = data),
+      tap((data: ServerInfoDTO) => this.serverInfoProperties=this.serverInfoPropertyInitializerService.Init(data))
       )
     .subscribe();
   }
-
 }

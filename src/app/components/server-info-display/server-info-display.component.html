@@ -1,4 +1,14 @@
-<div *ngIf="serverInfo" class="d-flex">
-    <div>Date Time:</div>
-    <div [ngClass]="{'big-value': serverInfo.dateTime > 15000}">{{ serverInfo.dateTime }}</div>
-  </div>
+<div *ngIf="serverInfoProperties.length" class="d-flex">
+  <div class="container"> 
+    <div *ngFor="let prop of serverInfoProperties">
+      <div class="row">
+        <div class="col-4">
+           {{ prop.description }}: 
+        </div>
+        <div class="col-4">
+           {{ prop.value }}
+        </div>
+      </div>
+   </div>
+  </div>  
+</div>
