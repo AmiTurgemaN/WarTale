@@ -1,7 +1,13 @@
-.big-value {
-    font-weight: bold;
+.table td.fit, 
+.table th.fit{
+    white-space: nowrap;
+    width: 1%;
 }
 
-.d-flex {
-    display: flex;
+th {
+    border-top: none;
+}
+
+td {
+    border-top: none;
 }

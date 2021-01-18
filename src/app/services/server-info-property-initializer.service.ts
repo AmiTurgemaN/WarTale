@@ -27,7 +27,7 @@ export class ServerInfoPropertyInitializerService {
 
   private InitServerDateTime(dateTime: any)
   {
-      this.serverInfoProperties.push(new ServerInfoProperty("Server Date Time", dateTime, Server.Common));
+      this.serverInfoProperties.push(new ServerInfoProperty("Date Time", dateTime, Server.Global));
   }
 
 }

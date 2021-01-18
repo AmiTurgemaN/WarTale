@@ -1,14 +1,42 @@
-<div *ngIf="serverInfoProperties.length" class="d-flex">
-  <div class="container"> 
-    <div *ngFor="let prop of serverInfoProperties">
-      <div class="row">
-        <div class="col-4">
-           {{ prop.description }}: 
+<div *ngIf="serverInfoProperties.length">
+  <div class="container">
+    <table id="infoTable" class="table text-center">
+      <thead>
+        <tr>
+          <th>
+            <div class="input-group">
+              <input type="text" class="form-control" placeholder="Server" aria-label="Server"
+                aria-describedby="basic-addon2">
+            </div>
+          </th>
+          <th>
+            <div class="input-group">
+              <input type="text" class="form-control" placeholder="Description" aria-label="Description"
+                aria-describedby="basic-addon2">
+            </div>
+          </th>
+          <th>
+            <div class="input-group">
+              <input type="text" class="form-control" placeholder="Value" aria-label="Value"
+                aria-describedby="basic-addon2">
+            </div>
+          </th>
+        </tr>
+        <tr>
+            <th>Server</th>
+            <th>Description</th>
+            <th>Value</th>
+        </tr>
+      </thead>
+      <tbody>
+        <div *ngFor="let prop of serverInfoProperties">
+          <tr>
+            <td>{{ prop.server }}</td>
+            <td>{{ prop.description }}</td>
+            <td>{{ prop.value }}</td>
+          </tr>
         </div>
-        <div class="col-4">
-           {{ prop.value }}
-        </div>
-      </div>
-   </div>
-  </div>  
+      </tbody>
+    </table>
+  </div>
 </div>
