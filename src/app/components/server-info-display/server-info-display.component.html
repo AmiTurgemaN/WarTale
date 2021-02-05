@@ -1,14 +1,18 @@
-<div *ngIf="serverInfoProperties.length" class="d-flex">
-  <div class="container"> 
-    <div *ngFor="let prop of serverInfoProperties">
-      <div class="row">
-        <div class="col-4">
-           {{ prop.description }}: 
-        </div>
-        <div class="col-4">
-           {{ prop.value }}
-        </div>
-      </div>
-   </div>
-  </div>  
+<div *ngIf="propertiesMap.size" class="d-flex">
+  <table class="styled-table">
+    <thead>
+      <tr>
+        <th>Description</th>
+        <th>Value</th>
+        <th>Server</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let prop of propertiesMap | keyvalue">
+          <td>{{ prop.value.description }}</td>
+          <td>{{ prop.value.value }}</td>
+          <td>{{ prop.value.server }}</td>
+        </tr>
+    </tbody>
+  </table>
 </div>

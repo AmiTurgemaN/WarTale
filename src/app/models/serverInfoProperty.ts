@@ -5,10 +5,10 @@ export interface IServerInfoProperty {
 }
 
 export enum Server {
-    Ares = 1,
-    Mars,
-    Odin,
-    Common,
+    Ares = 'Ares',
+    Mars = 'Mars',
+    Odin = 'Odin',
+    Common = 'All',
   }
 
   export class ServerInfoProperty implements IServerInfoProperty {

@@ -12,14 +12,12 @@ import { ServerInfoProperty } from 'src/app/models/serverInfoProperty';
 })
 export class ServerInfoDisplayComponent implements OnInit {
 
-  serverInfo: ServerInfoDTO;
-  serverInfoProperties: ServerInfoProperty [];
+  public propertiesMap: Map<string,ServerInfoProperty>;
 
   constructor(
       private serverInfoHttpService: ServerInfoHttpService,
       private serverInfoPropertyInitializerService: ServerInfoPropertyInitializerService){ 
-    this.serverInfo = {};
-    this.serverInfoProperties = [];
+        this.propertiesMap = new Map<string,ServerInfoProperty>();
   }
 
   ngOnInit(): void {
@@ -29,9 +27,13 @@ export class ServerInfoDisplayComponent implements OnInit {
   private getServerInfo() {
     this.serverInfoHttpService.getServerInfoInfo()
     .pipe(
-      tap((data: ServerInfoDTO) => this.serverInfo = data),
-      tap((data: ServerInfoDTO) => this.serverInfoProperties=this.serverInfoPropertyInitializerService.Init(data))
+      tap((data: ServerInfoDTO) => this.propertiesMap = this.serverInfoPropertyInitializerService.Init(data))
       )
     .subscribe();
+  }
+
+  public PropertiesMap(): Map<string,ServerInfoProperty>
+  {
+    return this.serverInfoPropertyInitializerService.serverInfoPropertiesDic;
   }
 }
