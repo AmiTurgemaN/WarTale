@@ -3,7 +3,7 @@ import { ServerInfoHttpService } from 'src/app/services/shared.service';
 import { ServerInfoDTO } from '../../models/server-info-DTO';
 import { ServerInfoPropertyInitializerService } from '../../services/server-info-property-initializer.service';
 import { tap } from 'rxjs/operators';
-import { ServerInfoProperty } from 'src/app/models/serverInfoProperty';
+import { ServerInfoProperty} from 'src/app/models/serverInfoProperty';
 
 @Component({
   selector: 'app-server-info-display',
